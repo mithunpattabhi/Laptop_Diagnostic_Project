@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Laptop Health Diagnostic Tool</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>💻 Laptop Health Diagnostic Tool</h1>
+        <p>Upload your <b>HWiNFO</b> CSV file to analyze your system’s performance and health.</p>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert {{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        <form action="/" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" accept=".csv" required>
+            <button type="submit">Analyze Now</button>
+        </form>
+
+        <hr class="divider">
+
+        <div class="guide">
+            <h2>🧾 How to Get the CSV File from HWiNFO</h2>
+            <ol>
+                <li>Open the <b>HWiNFO</b> application/ Download HWinFO from official website.</li>
+                <li>Click on the <b>“Start”</b> button to open the sensor monitoring window.</li>
+                <img src="static/step1.png" alt="HWiNFO Sensors Window" class="guide-img">
+                
+                <li>At the top left of the screen, click on the <b>“Sensors”</b> icon.</li>
+                <img src="static/step2.png" alt="Start Logging Button" class="guide-img">
+
+                <li>At the top bottom of the screen, click on the <b>“Logging Start”</b> icon (a green log icon).</li>
+                <img src="static/step3.png" alt="Start Logging Button" class="guide-img">
+
+                <li>Choose a location to save your log and select the file type as <b>CSV</b>.</li>
+
+                <li>Let the system run for a few minutes (ideally under normal load).</li>
+                <li>Click the <b>“Stop Logging”</b> button and locate your generated <b>CSV file</b>.</li>
+                <li>Now upload that CSV file here to check your laptop’s health 🔍.</li>
+            </ol>
+        </div>
+    </div>
+    <footer class="footer-card">
+  <div class="footer-content">
+    <h4>Developed by Mithun Pattabhi</h4>
+    <p>Thank you for exploring my project! Your feedback and support mean a lot.</p>
+    <div class="footer-icons">
+      <a href="https://github.com/mithunpattabhi" target="_blank" title="GitHub">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" 
+         alt="GitHub" style="width:30px; height:30px; margin:0 10px;">
+  </a>
+  <a href="https://www.linkedin.com/in/mithun-pattabhi-b001172a7" target="_blank" title="LinkedIn">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" 
+         alt="LinkedIn" style="width:30px; height:30px; margin:0 10px;">
+  </a>
+      </a>
+    </div>
+  </div>
+</footer>
+
+
+</body>
+</html>

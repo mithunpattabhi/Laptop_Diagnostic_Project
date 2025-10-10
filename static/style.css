@@ -1,0 +1,130 @@
+body {
+    background-color: #121212;
+    color: #fff;
+    font-family: "Segoe UI", sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    margin-top: 100px;
+}
+
+h1 {
+    color: #00bcd4;
+}
+
+input[type="file"] {
+    margin: 20px;
+    background-color: #222;
+    border: 1px solid #00bcd4;
+    color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+button {
+    background-color: #00bcd4;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0097a7;
+}
+
+.alert {
+    margin: 15px auto;
+    width: 60%;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.alert.success {
+    background-color: #2e7d32;
+}
+
+.alert.danger {
+    background-color: #c62828;
+}
+.divider {
+    margin: 40px auto;
+    width: 70%;
+    border: 1px solid #333;
+}
+
+.guide {
+    text-align: left;
+    width: 70%;
+    margin: 0 auto;
+    background-color: #1e1e1e;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+
+.guide h2 {
+    color: #00bcd4;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.guide ol {
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+.guide-img {
+    display: block;
+    margin: 10px auto 20px auto;
+    max-width: 90%;
+    border-radius: 10px;
+    border: 1px solid #333;
+}
+.footer-card {
+  background: #1a1a1a;
+  color: #f0f0f0;
+  text-align: center;
+  padding: 25px 20px;
+  margin-top: 50px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  transition: all 0.3s ease;
+}
+
+.footer-card:hover {
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+  transform: translateY(-3px);
+}
+
+.footer-card h4 {
+  margin: 5px 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.footer-card p {
+  margin: 8px 0 12px 0;
+  font-size: 14px;
+  color: #ccc;
+}
+
+.footer-icons a {
+  margin: 0 8px;
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.footer-icons a img {
+  width: 28px;
+  filter: brightness(0) invert(1);
+}
+
+.footer-icons a:hover {
+  transform: scale(1.2);
+}
