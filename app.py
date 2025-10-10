@@ -13,11 +13,9 @@ app.secret_key = "diagnostic_secret"
 app.config["UPLOAD_FOLDER"] = "uploads"
 app.config["ALLOWED_EXTENSIONS"] = {"csv"}
 
-# Load model, scaler
 model = joblib.load(open("model/hardware_health_model.pkl", "rb"))
 scaler = joblib.load(open("model/scaler.pkl", "rb"))
 
-# Load baseline healthy dataset
 healthy_df = pd.read_csv("Healthy.csv")
 FEATURES = [
     "Core Temperatures (avg) [°C]",
@@ -38,7 +36,6 @@ FEATURES = [
     "Frame Time Presented (avg) [ms]"
 ]
 
-# Ensure all baseline columns are numeric
 def extract_numeric(series):
     return pd.to_numeric(series.astype(str).str.extract(r'([-+]?\d*\.?\d+)')[0], errors='coerce')
 
@@ -81,7 +78,6 @@ def create_summary_pdf(result_text, user_data, baseline_data, notes):
     else:
         pdf.multi_cell(0, 8, "All metrics are within healthy ranges.")
 
-    # Comparison graph
     metrics_to_plot = ["CPU Core [°C]", "GPU Temperature [°C]", "Physical Memory Load [%]", "GPU Utilization [%]"]
     values = [user_data[m] for m in metrics_to_plot]
     baseline_values = [baseline_data[m] for m in metrics_to_plot]
@@ -125,22 +121,20 @@ def index():
         try:
             df = pd.read_csv(filepath, encoding='latin1', skiprows=0)
 
-            # Normalize column names
             df_columns_norm = {normalize_name(c): c for c in df.columns}
             FEATURES_NORM = {normalize_name(f): f for f in FEATURES}
 
-            # Prepare DataFrame
             predict_df = pd.DataFrame()
             for f_norm, f_orig in FEATURES_NORM.items():
                 if f_norm in df_columns_norm:
                     col_name = df_columns_norm[f_norm]
                     predict_df[f_orig] = extract_numeric(df[col_name])
                 else:
-                    predict_df[f_orig] = 0  # fallback for missing columns
+                    predict_df[f_orig] = 0  
 
             df_mean = predict_df.mean().to_frame().T.fillna(0)
 
-            # Notes for analysis
+
             notes = []
             for feature in FEATURES:
                 user_val = df_mean[feature].values[0]
@@ -148,7 +142,6 @@ def index():
                 if baseline_val > 0 and abs(user_val - baseline_val)/baseline_val > 0.1:
                     notes.append(f"{feature} deviates from healthy value ({baseline_val:.2f}). Current: {user_val:.2f}")
 
-            # Scale and predict
             scaled = scaler.transform(df_mean)
             pred = model.predict(scaled)[0]
 
