@@ -147,9 +147,11 @@ def index():
 
             result_text = "Your laptop appears to be Healthy!" if pred == 0 else "Your laptop shows signs of abnormal performance!"
             summary = create_summary_pdf(result_text, df_mean.iloc[0], baseline_mean, notes)
+            os.remove(filepath)
 
             flash(result_text, "success" if pred==0 else "danger")
             return send_file(summary, as_attachment=True, download_name="diagnostic_report.pdf")
+        
 
         except Exception as e:
             flash(f"Error processing file: {str(e)}", "danger")
