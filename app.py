@@ -16,7 +16,7 @@ app.config["ALLOWED_EXTENSIONS"] = {"csv"}
 model = joblib.load(open("model/hardware_health_model.pkl", "rb"))
 scaler = joblib.load(open("model/scaler.pkl", "rb"))
 
-healthy_df = pd.read_csv("Healthy.csv")
+healthy_df = pd.read_csv("healthy.csv")
 FEATURES = [
     "Core Temperatures (avg) [°C]",
     "CPU Core [°C]",
