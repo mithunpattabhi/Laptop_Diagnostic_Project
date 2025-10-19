@@ -39,6 +39,8 @@ If you don’t know how to export your laptop data from HWInfo:
 5. Upload this CSV to the Laptop Health Diagnostic Tool.  
 
 ---
+## Website Link
+https://simple-laptop-health-diagnostics.onrender.com/
 
 ## Installation
 1. Clone the repository:
@@ -46,8 +48,4 @@ If you don’t know how to export your laptop data from HWInfo:
 git clone https://github.com/mithunpattabhi/laptop-health-diagnostic.git
 cd laptop-health-diagnostic
 
----
 
-
-## Website Link:
-https://simple-laptop-health-diagnostics.onrender.com/
